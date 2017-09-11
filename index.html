@@ -157,8 +157,6 @@
 				display: none;
 			}
 		</style>
-		<script src="http://cdn.jsdelivr.net/npm/mediaelement@4.2.5/build/mediaelement.min.js"></script>
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/mediaelement@4.2.5/build/mediaelementplayer.min.css" />
 	</head>
 	<body style="background-color: #000; color: #fff;">
 		<h1 style="display: none;">ShokData</h1>
@@ -181,52 +179,49 @@
 		</video>
 		<script>
 			var video = document.getElementById("shokdata");
-			//video.play();
-			//video.pause();
-
 			var preloader = document.getElementById("loader");
+
 			function dlog(msg){
 				if (console && console.log) {
 					console.log(msg);
 				}
 			}
+
+			var playing = false;
+			function togglePlayback(){
+				if (playing) {
+					video.pause();
+					playing = false;
+					dlog("Paused video");
+				} else {
+					video.play();
+					playing = true;
+					dlog("Playing video");
+				}
+			}
+
 			function playVideo(){
 				if (video.readyState === 4) {
-					dlog("Video ready");
+				setTimeout(function(){
+					//Remove preloader
+					preloader.parentNode.removeChild(preloader);
+					dlog("Preloader removed");
 
-					setTimeout(function(){
-						//Remove preloader
-						preloader.parentNode.removeChild(preloader);
-						dlog("Preloader removed");
+					//Display video
+					video.style.display = "block";
+					dlog("Video displayed");
 
-						//Display video
-						video.style.display = "block";
-						dlog("Video displayed");
-
-						//Play video
-						video.play();
-						dlog("Video playing");
-					}, 1500);
-					dlog("Video delay set");
+					//Play video
+					togglePlayback();
+					
+				}, 500);
+				dlog("Video delay set");
 				} else {
 					setTimeout(playVideo, 200);
 				}
 			};
-			//playVideo();
-			//dlog("Waiting for video to load");
-			var player = new MediaElement('shokdata', {
-				success: function(mediaElement, originalNode) {
-					// do things
-						preloader.parentNode.removeChild(preloader);
-						dlog("Preloader removed");
-
-						//Display video
-						video.style.display = "block";
-						dlog("Video displayed");
-
-						mediaElement.play();
-				}
-			});
+			playVideo();
+			dlog("Waiting for video to load");
 		</script>
 	</body>
 </html>
