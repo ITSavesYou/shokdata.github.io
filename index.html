@@ -157,6 +157,8 @@
 				display: none;
 			}
 		</style>
+		<script src="http://cdn.jsdelivr.net/npm/mediaelement@4.2.5/build/mediaelement.min.js"></script>
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/mediaelement@4.2.5/build/mediaelementplayer.min.css" />
 	</head>
 	<body style="background-color: #000; color: #fff;">
 		<h1 style="display: none;">ShokData</h1>
@@ -179,8 +181,8 @@
 		</video>
 		<script>
 			var video = document.getElementById("shokdata");
-			video.play();
-			video.pause();
+			//video.play();
+			//video.pause();
 
 			var preloader = document.getElementById("loader");
 			function dlog(msg){
@@ -210,8 +212,21 @@
 					setTimeout(playVideo, 200);
 				}
 			};
-			playVideo();
-			dlog("Waiting for video to load");
+			//playVideo();
+			//dlog("Waiting for video to load");
+			var player = new MediaElement('shokdata', {
+				success: function(mediaElement, originalNode) {
+					// do things
+						preloader.parentNode.removeChild(preloader);
+						dlog("Preloader removed");
+
+						//Display video
+						video.style.display = "block";
+						dlog("Video displayed");
+
+						mediaElement.play();
+				}
+			});
 		</script>
 	</body>
 </html>
