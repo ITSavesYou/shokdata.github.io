@@ -191,19 +191,20 @@
 			function playVideo(){
 				if (video.readyState === 4) {
 					dlog("Video ready");
-					//Remove preloader
-					preloader.parentNode.removeChild(preloader);
-					dlog("Preloader removed");
-
-					//Display video
-					video.style.display = "block";
-					dlog("Video displayed");
 
 					setTimeout(function(){
+						//Remove preloader
+						preloader.parentNode.removeChild(preloader);
+						dlog("Preloader removed");
+
+						//Display video
+						video.style.display = "block";
+						dlog("Video displayed");
+
 						//Play video
 						video.play();
 						dlog("Video playing");
-					}, 1000);
+					}, 1500);
 					dlog("Video delay set");
 				} else {
 					setTimeout(playVideo, 200);
