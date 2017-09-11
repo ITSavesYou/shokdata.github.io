@@ -196,9 +196,12 @@
 					video.style.display = "block";
 					dlog("Video displayed");
 
-					//Play video
-					video.play();
-					dlog("Video playing");
+					setTimeout(function(){
+						//Play video
+						video.play();
+						dlog("Video playing");
+					}, 1000);
+					dlog("Video delay set");
 				} else {
 					setTimeout(playVideo, 200);
 				}
