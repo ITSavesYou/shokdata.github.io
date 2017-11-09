@@ -21,6 +21,8 @@
 		<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
 		<!-- Preloader originally by Glen Cheney -->
 		<style>
 			body {
@@ -245,7 +247,8 @@
 						//On stop, show contact form
 						video.addEventListener('ended', function(e){
 							var tform = document.getElementById('typeformWidget');
-							tform.style.display = 'block';
+							//tform.style.display = 'block';
+							tform.className = tform.className + ' animated slideInDown';
 						}, false);
 						
 					}, 500);
