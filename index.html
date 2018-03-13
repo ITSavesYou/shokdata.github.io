@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>ShokDATA</title>
-		<meta name="copyright" content="ShokDATA by IT Saves You LTD - 2017" />
+		<meta name="copyright" content="ShokDATA by IT Saves You LTD - 2018" />
 
 		<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
@@ -189,7 +189,7 @@
 		</style>
 	</head>
 	<body style="background-color: #000; color: #fff;">
-		<h1 style="display: none;">ShokData</h1>
+		<h1>ShokData</h1>
 		<div id="loader" class="loader">
 			<span class="loader-block"></span>
 			<span class="loader-block"></span>
@@ -233,6 +233,7 @@
 			function playVideo(){
 				if (video.readyState === 4) {
 					setTimeout(function(){
+						dlog("Video loaded");
 						//Remove preloader
 						preloader.parentNode.removeChild(preloader);
 						dlog("Preloader removed");
