@@ -243,13 +243,6 @@
 
 						//Play video
 						togglePlayback();
-
-						//On stop, show contact form
-						video.addEventListener('ended', function(e){
-							var tform = document.getElementById('typeformWidget');
-							tform.className = tform.className + ' animated slideInDown';
-							tform.style.display = 'block';
-						}, false);
 						
 					}, 500);
 					dlog("Video delay set");
@@ -257,10 +250,9 @@
 					setTimeout(playVideo, 200);
 				}
 			};
-			playVideo();
-			dlog("Waiting for video to load");
+			video.onclick = function() { playVideo(); };
+			dlog("Waiting for video to load, click the video to play");
 		</script>
-<div id="typeformWidget" class="typeform-widget" data-url="https://ryan174.typeform.com/to/ZGNLAs" data-transparency="50" data-hide-headers=true data-hide-footer=true> </div> 
-<script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> 
-</body>
+<script type="text/javascript">!function(d){var s=d.createElement('script');s.src='https://widget.indemand.ly/launcher.js';s.onload=function(){window.indemandly = new Indemandly({"domain":"ryanodell"});};var c=d.getElementsByTagName('script')[0];c.parentNode.insertBefore(s,c);}(document)</script>
+	</body>
 </html>
